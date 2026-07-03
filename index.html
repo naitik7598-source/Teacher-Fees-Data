@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Fee Management</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">Teacher Portal</p>
+        <h1>Student Fee Management Dashboard</h1>
+        <p>Capture student details, log fees for every month, and keep your records safe with local browser storage.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="clearAllBtn" class="button button-secondary">Clear all records</button>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="summary-card accent-card">
+        <p class="summary-label">Total students</p>
+        <p class="summary-value" id="summaryCount">0</p>
+      </article>
+      <article class="summary-card accent-card-2">
+        <p class="summary-label">Total paid months</p>
+        <p class="summary-value" id="summaryPaid">0</p>
+      </article>
+      <article class="summary-card accent-card-3">
+        <p class="summary-label">Total fees collected</p>
+        <p class="summary-value" id="summaryDue">₹0</p>
+      </article>
+      <article class="summary-card accent-card-4">
+        <p class="summary-label">Next action</p>
+        <p class="summary-value">Add or search a student</p>
+      </article>
+    </section>
+
+    <section class="panel-grid">
+      <div class="panel form-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Student record</p>
+            <h2 id="formHeader">New student & monthly fees</h2>
+          </div>
+        </div>
+
+        <form id="studentForm" class="student-form">
+          <div class="form-row">
+            <label>
+              Student name
+              <input type="text" id="studentName" placeholder="Enter student name" required />
+            </label>
+            <label>
+              Class / Grade
+              <input type="text" id="studentClass" placeholder="e.g. 8th Grade" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Roll number
+              <input type="text" id="rollNumber" placeholder="Roll No." />
+            </label>
+            <label>
+              Contact number
+              <input type="tel" id="studentPhone" placeholder="Phone number" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Email address
+              <input type="email" id="studentEmail" placeholder="teacher or guardian email" />
+            </label>
+            <label>
+              Admission date
+              <input type="date" id="admissionDate" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="wide">
+              Base monthly fee
+              <div class="input-group">
+                <input type="number" id="baseFee" placeholder="₹0" min="0" />
+                <button type="button" id="applyBaseFee" class="button button-ghost">Apply to all months</button>
+              </div>
+            </label>
+          </div>
+
+          <div class="monthly-grid" id="monthlyFeeGrid">
+            <!-- Month inputs rendered by JavaScript -->
+          </div>
+
+          <div class="summary-line">
+            <div>
+              <span class="summary-label">Total fee amount</span>
+              <strong id="totalFee">₹0</strong>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="button button-primary" id="submitButton">Save student record</button>
+              <button type="button" class="button button-secondary hidden" id="cancelEditButton">Cancel edit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel table-panel">
+        <div class="panel-heading search-panel">
+          <div>
+            <p class="eyebrow">Records</p>
+            <h2>Saved student fees</h2>
+          </div>
+          <label class="search-box">
+            <input type="search" id="searchInput" placeholder="Search by student name or class" />
+          </label>
+        </div>
+
+        <div class="table-wrap">
+          <table class="records-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Roll</th>
+                <th>Paid</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="recordsBody">
+              <tr><td colspan="7" class="empty-state">No records added yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
